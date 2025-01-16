@@ -1,0 +1,17 @@
+{
+    "FORM": {
+      "NAME": "Name",
+      "EMAIL": "E-mail",
+      "PHONE": "Phone Number",
+      "BRANCH": "Preferred Branch",
+      "ATTACHMENTS": "Add Attachments",
+      "Preview": "Preview",
+      "Browse": "Browse Files",
+      "SUBMIT": "Submit",
+      "ERRORS": {
+        "REQUIRED": "This field is required.",
+        "INVALID_EMAIL": "Please enter a valid email address.",
+        "INVALID_PHONE": "Please enter a valid phone number."
+      }
+    }
+  }

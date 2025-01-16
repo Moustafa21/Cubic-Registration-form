@@ -1,0 +1,109 @@
+<div class="language-switch fixed-top text-end p-3 bg-light border-bottom">
+  <button (click)="changeLanguage('en')" class="btn btn-outline-primary me-2">English</button>
+  <button (click)="changeLanguage('ar')" class="btn btn-outline-primary">العربية</button>
+</div>
+
+<div class="container mt-5">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="name">{{ 'FORM.NAME' | translate }}</label>
+          <input class="form-control" id="name" type="text" formControlName="name" />
+          <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="text-danger">
+            {{ 'FORM.ERRORS.REQUIRED' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb-3">
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="email">{{ 'FORM.EMAIL' | translate }}</label>
+          <input class="form-control" id="email" type="email" formControlName="email" />
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-danger">
+            <div *ngIf="registrationForm.get('email')?.errors?.['required']">
+              {{ 'FORM.ERRORS.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="registrationForm.get('email')?.errors?.['email']">
+              {{ 'FORM.ERRORS.INVALID_EMAIL' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="phone">{{ 'FORM.PHONE' | translate }}</label>
+          <input class="form-control" id="phone" type="number" formControlName="phone" />
+          <div *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched" class="text-danger">
+            <div *ngIf="registrationForm.get('phone')?.errors?.['required']">
+              {{ 'FORM.ERRORS.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="registrationForm.get('phone')?.errors?.['pattern']">
+              {{ 'FORM.ERRORS.INVALID_PHONE' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="branch">{{ 'FORM.BRANCH' | translate }}</label>
+          <select class="form-control" id="branch" formControlName="branch">
+            <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.branchname }}</option>
+          </select>
+          <div *ngIf="registrationForm.get('branch')?.errors?.['required'] && registrationForm.get('branch')?.touched" class="text-danger">
+              {{ 'FORM.ERRORS.REQUIRED' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="file-upload">{{ 'FORM.ATTACHMENTS' | translate }}</label>
+          <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
+            (onFileLeave)="fileLeave($event)">
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+              <button type="button" class="btn btn-outline-secondary" (click)="openFileSelector()">{{ 'FORM.Browse' | translate }}</button>
+            </ng-template>
+          </ngx-file-drop>
+        </div>
+
+        <div class="upload-table mt-3">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>{{ 'FORM.NAME' | translate }}</th>
+                <th>{{ 'FORM.Preview' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody class="upload-name-style">
+              <tr *ngFor="let item of files; let i = index">
+                <td><strong>{{ item.name }}</strong></td>
+                <td *ngIf="item.type === 'image'">
+                  <img [src]="item.imageUrl" alt="{{ item.name }}" class="img-fluid" style="max-width: 100px;" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary w-100">{{ 'FORM.SUBMIT' | translate }}</button>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,47 @@
+.language-switch {
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 600px;
+    margin-top: 100px; 
+    padding-top: 80px;
+  }
+  
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #343a40;
+  }
+  
+  form {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ngx-file-drop {
+    background-color: #e9ecef;
+    border: 2px dashed #6c757d;
+    text-align: center;
+    padding: 15px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .ngx-file-drop:hover {
+    background-color: #f1f3f5;
+  }
+  
+  table img {
+    max-width: 100px;
+    border-radius: 4px;
+  }
+  
+  button {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+    
